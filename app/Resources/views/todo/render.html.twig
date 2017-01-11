@@ -1,0 +1,12 @@
+<div id="screen" name="screen">
+    {% for item in products %}
+    <div id="{{ item.id }}" name="{{ item.id }}" class="goal"> {#onclick="expand_div('{{ item.id }}')">#}
+        <p>{{ item.description }}</p><br>
+        <p id="p_{{ item.id }}" name="p_{{ item.id }}" class="inner_p">{{ item.date.format('Y-m-d H:i:s') }} {{ item.username }}</p>
+    </div>
+    {% endfor %}
+</div>
+<br>
+<div id="new_box" name="new_box">
+    <button type="button" id="new_button" onclick="new_form()">Add new TODO</button>
+</div>

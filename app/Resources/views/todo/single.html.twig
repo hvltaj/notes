@@ -1,0 +1,6 @@
+<div id="{{ item.id }}" name="{{ item.id }}" class="goal"> {#onclick="expand_div('{{ item.id }}')">#}
+    <p class="head">{{ item.description }}</p><br>
+    <p id="p_{{ item.id }}" name="p_{{ item.id }}" class="inner_p">{{ item.date.format('Y-m-d H:i:s') }} {{ item.username }}
+        <button type="button" id="done_button" onclick="done(this)">DONE</button>
+    </p>
+</div>
