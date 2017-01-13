@@ -1,9 +1,17 @@
 <div id="stat1" class="stat">
     <p class="pt">Done today:</p>
-    <p class="pt"> {{ today_stat }}</p>
+    <div class="progress">
+        <div class="progress-bar" role="progressbar" aria-valuenow="{{ today_stat }}" aria-valuemin="0" aria-valuemax="100" style="min-width: 2em; width: {{ today_stat }}%;">
+            {{ today_stat }}%
+        </div>
+    </div>
 </div>
 <div id="stat2" class="stat">
 
     <p class="pt">Done this week:</p>
-    <p class="pt"> {{ week_stat }}</p>
+    <div class="progress">
+        <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="{{ week_stat }}" aria-valuemin="0" aria-valuemax="100" style="min-width: 2em; width: {{ week_stat }}%;">
+            {{ week_stat }}%
+        </div>
+    </div>
 </div>

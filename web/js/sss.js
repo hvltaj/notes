@@ -14,17 +14,30 @@ function expand_div(id) {
 
 function new_form() {
     $("#new_box").html("<form id='new_form' action='/save' method='post'> " +
-        "<br>Description<br><br><textarea name='idescription' id='idescription' cols='104'></textarea><br>" +
-        "<br>Priority  <select name='ipriority' id='ipriority'>" +
-            "<option value='1'>1</option>" +
-        "<option value='2'>2</option>" +
-        "<option value='3'>3</option>" +
+        "<br><textarea class='well' name='idescription' id='idescription' style='width: 97%'>Description</textarea><br>" +
+        "<select name='ipriority' id='ipriority' class='form-control' style='width: 97%'>" +
+            "<option selected disabled>Priority</option>" +
+            "<option value='5'>5</option>" +
         "<option value='4'>4</option>" +
-        "<option value='5'>5</option>" +
+        "<option value='3'>3</option>" +
+        "<option value='2'>2</option>" +
+        "<option value='1'>1</option>" +
         "</select><br>" +
         // "<input type='submit' value='Submit' name='button_submit'>"
-        "<br><input id='submit' onclick='gogogo()' type='button' value='Submit'>" +
+        "<br><input id='submit' onclick='gogogo()' type='button' value='Submit' class='btn btn-default btn-lg'>" +
         "</form>");
+
+    $("#idescription")
+        .focus(function() {
+            if (this.value === this.defaultValue) {
+                this.value = '';
+            }
+        })
+        .blur(function() {
+            if (this.value === '') {
+                this.value = this.defaultValue;
+            }
+        });
 }
 
 function gogogo() {
@@ -48,7 +61,7 @@ function gogogo() {
         },
         success: function(response) {
             $("#screen").append(response);
-            $("#new_box").html("<button type='button' id='new_button' onclick='new_form()'>Add new TODO</button>");
+            $("#new_box").html("<button type='button' class='btn btn-default btn-lg' id='new_button' onclick='new_form()'><span class='glyphicon glyphicon-floppy-saved' aria-hidden='true'></span> New Goal </button>");
         }
 
     });
@@ -64,9 +77,9 @@ function gogogo() {
     /* Alerts the results */
 }
 
-document.getElementById("logout_button").onclick = function () {
-    location.href = "/logout";
-};
+// document.getElementById("logout_button").onclick = function () {
+//     location.href = "/logout";
+// };
 
 $(document).on('click', '.head', function() {
     var clicks = $(this).data('clicks');
@@ -90,6 +103,14 @@ function done(e){
             id: idd
         },
         success: function (){
+
+            // var neww = e.parentNode.parentNode.cloneNode(true);
+            // neww.removeChild(neww.childNodes[3]);
+            // // $('#screen2').prepend(a);
+            // var container = document.getElementById('screen2');
+            // container.insertBefore(neww, container.firstChild);
+            //
+            // // container.append(neww);
             e.parentNode.parentNode.parentNode.removeChild(e.parentNode.parentNode);
         }
     })
@@ -103,3 +124,4 @@ function done(e){
     });
 
 }
+

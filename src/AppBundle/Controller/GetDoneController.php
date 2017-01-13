@@ -47,33 +47,41 @@ class GetDoneController extends Controller
         $one_day = $today->sub(new \DateInterval('P1D'));
         $today = new \DateTime("now");
 
-        foreach ($products as $item){
+        if (empty($products)){
+            $week_not_done = 1;
+            $today_not_done = 1;
 
 
-            if ($item->getDate() > $one_day){
-                if ($item->getProgress() == 0){
-                    $today_not_done += 1;
-                } else {
-                    $today_done += 1;
+        } else {
+
+            foreach ($products as $item) {
+
+
+                if ($item->getDate() > $one_day) {
+                    if ($item->getProgress() == 0) {
+                        $today_not_done += 1;
+                    } else {
+                        $today_done += 1;
+                    }
                 }
-            }
 
-            if ($item->getDate() > $date_7days_ago and $item->getDate() < $today) {
-                if ($item->getProgress() == 0){
-                    $week_not_done += 1;
-                } else {
-                    $week_done += 1;
+                if ($item->getDate() > $date_7days_ago and $item->getDate() < $today) {
+                    if ($item->getProgress() == 0) {
+                        $week_not_done += 1;
+                    } else {
+                        $week_done += 1;
+                    }
                 }
-            }
 
+            }
         }
 
-        $today_stat = round($today_done / ($today_not_done + $today_done), 2) * 100;
-        $week_stat = round($week_done / ($week_done + $week_not_done), 2) * 100;
+        $today_stat = round($today_done / ($today_not_done + $today_done + 0.000001), 2) * 100;
+        $week_stat = round($week_done / ($week_done + $week_not_done + 0.000001), 2) * 100;
 
         return $this->render('todo/getdone.html.twig', [
-            'today_stat' => (string)$today_stat.'%',
-            'week_stat' => (string)$week_stat.'%',
+            'today_stat' => (string)$today_stat,
+            'week_stat' => (string)$week_stat,
         ]);
     }
 

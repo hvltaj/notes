@@ -26,7 +26,7 @@ class GetDatabaseController extends Controller
 
         $products = $repository->findBy(
             array('username' => $this->get('security.token_storage')->getToken()->getUser()->getUsername()),
-            array('date' => 'ASC')
+            array('priority' => 'DESC')
         );
 
         $today_stat = 0;
@@ -34,6 +34,7 @@ class GetDatabaseController extends Controller
 
 
         $goals = Array();
+        $done_goals = Array();
 
         $today_done = 0;
         $today_not_done = 0;
@@ -51,6 +52,8 @@ class GetDatabaseController extends Controller
 
             if ($item->getProgress() == 0) {
                 $goals[] = $item;
+            } else {
+                $done_goals[] = $item;
             }
 
             if ($item->getDate() > $one_day){
@@ -71,13 +74,21 @@ class GetDatabaseController extends Controller
 
         }
 
+        if ($today_done == 0){
+            $today_done = 1;
+        }
+        if ($week_done == 0){
+            $week_done = 1;
+        }
+
         $today_stat = round($today_done / ($today_not_done + $today_done), 2) * 100;
         $week_stat = round($week_done / ($week_done + $week_not_done), 2) * 100;
 
         return $this->render('todo/todo.html.twig', [
             'products' => $goals,
-            'today_stat' => (string)$today_stat.'%',
-            'week_stat' => (string)$week_stat.'%',
+            'today_stat' => (string)$today_stat,
+            'week_stat' => (string)$week_stat,
+            'done_goals' => $done_goals,
         ]);
     }
 

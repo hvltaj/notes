@@ -1,9 +1,11 @@
-{# app/Resources/views/security/login.html.twig #}
-{# ... you will probably extend your base template, like base.html.twig #}
-
 <head>
     <link rel="stylesheet" type="text/css" href="{{ asset('css/my.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('css/bootstrap.min.css') }}">
+
+    <script src="/js/jquery.min.js"></script>
+    <script src="/js/jquery-ui.min.js"></script>
+    {#<script type="text/javascript" src="/js/sss.js"></script>#}
+    <script type="text/javascript" src="{{ asset('js/bootstrap.min.js') }}"></script>
     <style>
         body{background: #eee url({{ asset('sativa.png') }});}
         html,body{
@@ -143,70 +145,8 @@
         }
 
     </style>
-    <script src="/js/jquery.min.js"></script>
-    <script src="/js/jquery-ui.min.js"></script>
-    {#<script type="text/javascript" src="/js/sss.js"></script>#}
-    <script type="text/javascript" src="{{ asset('js/bootstrap.min.js') }}"></script>
-    <script type="text/javascript">
-        $(function(){
-            var textfield = $("input[name=_username]");
-            $('button[type="submit"]').click(function(e) {
-                e.preventDefault();
-                var tt = $(this);
-                //little validation just to check username
-                if (textfield.val() != "") {
-                    //$("body").scrollTo("#output");
-                    $("#output").addClass("alert alert-success animated fadeInUp").html("Welcome back " + "<span style='text-transform:uppercase'>" + textfield.val() + "</span>");
-                    $("#output").removeClass(' alert-danger');
-                    $("input").css({
-                        "height":"0",
-                        "padding":"0",
-                        "margin":"0",
-                        "opacity":"0"
-                    });
-                    //change button text
-                    $('button[type="submit"]').html("continue")
-                            .removeClass("btn-info")
-                            .addClass("btn-default").click(function(){
-                        document.fff.submit();
-                    });
-
-                    //show avatar
-                    $(".avatar").css({
-                        "background-image": "url({{ asset('82.jpg') }})"
-                    });
-                } else {
-                    //remove success mesage replaced with error message
-                    $("#output").removeClass(' alert alert-success');
-                    $("#output").addClass("alert alert-danger animated fadeInUp").html("sorry enter a username ");
-                }
-                //console.log(textfield.val());
-
-            });
-        });
-
-    </script>
 </head>
-
-{% if error %}
-    <div>{{ error.messageKey|trans(error.messageData, 'security') }}</div>
-{% endif %}
-<body style="background-color: ghostwhite">
-    {#<form action="{{ path('login') }}" method="post">#}
-        {#<label for="username">Username:</label>#}
-        {#<input type="text" id="username" name="_username" value="{{ last_username }}" />#}
-
-        {#<label for="password">Password:</label>#}
-        {#<input type="password" id="password" name="_password" />#}
-
-        {##}
-            {#If you want to control the URL the user#}
-            {#is redirected to on success (more details below)#}
-            {#<input type="hidden" name="_target_path" value="/account" />#}
-        {##}
-
-        {#<button type="submit">login</button>#}
-    {#</form>#}
+</body style="background-color: ghostwhite">
     <nav class="navbar navbar-inverse">
         <div class="container-fluid">
             <div class="navbar-header">
@@ -225,25 +165,39 @@
                 {#<li><a href="#">Contact</a></li>#}
                 {#</ul>#}
                 <ul class="nav navbar-nav navbar-right">
-                    <li><a href="{{ path('user_registration') }}"><span class="glyphicon glyphicon-registration-mark"></span> Sign up</a></li>
+                    <li><a href="{{ path('login') }}"><span class="glyphicon glyphicon-log-in"></span> Log in</a></li>
                 </ul>
             </div>
         </div>
     </nav>
-
     <div class="container">
         <div class="login-container">
             <div id="output"></div>
-            <div class="avatar"></div>
             <div class="form-box">
-                <form action="{{ path('login') }}" method="post" name="fff">
-                    <input type="text" id="username" name="_username" value="{{ last_username }}" placeholder="username">
-                    <input type="password" id="password" name="_password" placeholder="password">
-                    <input type="hidden" name="/todo" value="/todo" />
-                    <button class="btn btn-info btn-block login" type="submit">Login</button>
+                {#{{ form_start(form) }}#}
+                    {#{{ form_row(form.username) }}#}
+                    {#{{ form_row(form.email) }}#}
+                    {#{{ form_row(form.plainPassword.first) }}#}
+                    {#{{ form_row(form.plainPassword.second) }}#}
+
+
+                <form name="user" method="post">
+                    {{ form_row(form._token) }}
+                    <div><input id="user_username" name="user[username]" required="required" type="text" placeholder="username"></div>
+                    <div><input id="user_email" name="user[email]" required="required" type="email" placeholder="email"></div>
+                    <div><input id="user_plainPassword_first" name="user[plainPassword][first]" required="required" type="password" placeholder="password"></div>
+                    <div><input id="user_plainPassword_second" name="user[plainPassword][second]" required="required" type="password" placeholder="repeat password"></div>
+
+                    <button type="submit" class="btn btn-info btn-block login">Register!</button>
+                    {#<input id="user__token" name="user[_token]" value="PG1wfizwbB5AKTiKsHe5hU2_A2zsMgz5kaaUqU3LHy8" type="hidden">#}
                 </form>
+
+
+                {#<button type="submit" class="btn btn-info btn-block login">Register!</button>#}
+                {#{{ form_end(form) }}#}
+                {#{{ form_rest(form) }}#}
+            </div>
             </div>
         </div>
-
     </div>
 </body>

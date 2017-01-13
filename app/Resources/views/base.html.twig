@@ -6,10 +6,11 @@
         {% block stylesheets %}{% endblock %}
         <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
         {% block scr %}{% endblock %}
-    </head>
-    <body>
-
-        {% block body %}aaa{% endblock %}
         {% block javascripts %}{% endblock %}
+    </head>
+    {#<body style="background-color: ghostwhite">#}
+    <body style="background: #eee url({{ asset('sativa.png') }});">
+        {% block body %}aaa{% endblock %}
+
     </body>
 </html>

@@ -4,15 +4,19 @@ security:
 
     # http://symfony.com/doc/current/book/security.html#where-do-users-come-from-user-providers
     providers:
-        in_memory:
-            memory:
-              users:
-                  filip:
-                      password: filip
-                      roles: 'ROLE_ADMIN'
-                  admin:
-                      password: admin
-                      roles: 'ROLE_ADMIN'
+#        in_memory:
+#            memory:
+#              users:
+#                  filip:
+#                      password: filip
+#                      roles: 'ROLE_ADMIN'
+#                  admin:
+#                      password: admin
+#                      roles: 'ROLE_ADMIN'
+        our_db_provider:
+            entity:
+                class: AppBundle:User
+                property: username
 
     firewalls:
         # disables authentication for assets and the profiler, adapt it according to your needs
@@ -22,6 +26,7 @@ security:
 
         main:
             anonymous: ~
+#            provider: our_db_provider
             # activate different ways to authenticate
 
             # http_basic: ~
@@ -40,7 +45,10 @@ security:
 
     access_control:
         - { path: ^/login, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/register, roles: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/, roles: ROLE_ADMIN }
 
     encoders:
         Symfony\Component\Security\Core\User\User: plaintext
+        AppBundle\Entity\User:
+            algorithm: bcrypt

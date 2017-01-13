@@ -1,46 +1,109 @@
 {% extends "base.html.twig" %}
 {% block body %}
 
-    <H2>TODO LIST!</H2>
-
-    <div id="left_panel">
-
-        <div id="stat1" class="stat">
-            <p class="pt">Done today:</p>
-            <p class="pt"> {{ today_stat }}</p>
+    <nav class="navbar navbar-inverse">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                {#<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">#}
+                    {#<span class="icon-bar"></span>#}
+                    {#<span class="icon-bar"></span>#}
+                    {#<span class="icon-bar"></span>#}
+                {#</button>#}
+                <a class="navbar-brand" href="#">TODO List</a>
+            </div>
+            <div class="collapse navbar-collapse" id="myNavbar">
+                {#<ul class="nav navbar-nav">#}
+                    {#<li class="active"><a href="#">Home</a></li>#}
+                    {#<li><a href="#">About</a></li>#}
+                    {#<li><a href="#">Projects</a></li>#}
+                    {#<li><a href="#">Contact</a></li>#}
+                {#</ul>#}
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="{{ path('logout') }}"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
+                </ul>
+            </div>
         </div>
-        <div id="stat2" class="stat">
+    </nav>
 
-            <p class="pt">Done this week:</p>
-            <p class="pt"> {{ week_stat }}</p>
-        </div>
+<div class="container-fluid text-center">
+    <div class="row content">
+        {#<div id="left_panel">#}
+        <div class="col-sm-2 sidenav" id="left_panel">
 
-
-        <div id="stat3" class="stat"></div>
-
-    </div>
-
-    <button type="button" id="logout_button" name="logout_button">Logout</button>
-
-    <div id="tttable" name="tttable">
-
-
-        <div id="screen" name="screen">
-            {% for item in products %}
-                <div id="{{ item.id }}" name="{{ item.id }}" class="goal"> {#onclick="expand_div('{{ item.id }}')">#}
-                    <p class="head">{{ item.description }}</p><br>
-                    <p id="p_{{ item.id }}" name="p_{{ item.id }}" class="inner_p">{{ item.date.format('Y-m-d H:i:s') }} {{ item.username }}
-                        <button type="button" id="done_button" onclick="done(this)">DONE</button>
-                    </p>
+            <div id="stat1" class="stat">
+                <p class="pt"><b>Done today:</b></p>
+                <div class="progress">
+                    <div class="progress-bar" role="progressbar" aria-valuenow="{{ today_stat }}" aria-valuemin="0" aria-valuemax="100" style="min-width: 2em; width: {{ today_stat }}%;">
+                        {{ today_stat }}%
+                    </div>
                 </div>
-            {% endfor %}
-        </div>
-        <br>
-        <div id="new_box" name="new_box">
-            <button type="button" id="new_button" onclick="new_form()">Add new TODO</button>
+            </div>
+            <div id="stat2" class="stat">
+
+                <p class="pt"><b>Done this week:</b></p>
+                <div class="progress">
+                    <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="{{ week_stat }}" aria-valuemin="0" aria-valuemax="100" style="min-width: 2em; width: {{ week_stat }}%;">
+                        {{ week_stat }}%
+                    </div>
+                </div>
+            </div>
+
+
         </div>
 
+        {#<button type="button" id="logout_button" name="logout_button">Logout</button>#}
+
+        <div class="col-sm-7 text-left">
+        <div id="tttable" name="tttable" class="list-group">
+
+
+            <div id="screen" name="screen">
+                {% for item in products %}
+                    <div id="{{ item.id }}" name="{{ item.id }}" class="goal list-group-item
+                    {% if item.priority == 1 or item.priority == 2 %}
+                        list-group-item-success
+                    {% elseif item.priority == 5 %}
+                        list-group-item-danger
+                    {% else %}
+                        list-group-item-warning
+                    {% endif %}"> {#onclick="expand_div('{{ item.id }}')">#}
+                        <p class="head">{{ item.description }}</p>
+                        <br>
+                        <p id="p_{{ item.id }}" name="p_{{ item.id }}" class="inner_p">{{ item.date.format('Y-m-d H:i:s') }} {{ item.username }}
+                            <button type="button" id="done_button" onclick="done(this)" class="btn btn-default">Done</button>
+                        </p>
+                    </div>
+                {% endfor %}
+            </div>
+            <br>
+            <div id="new_box" name="new_box">
+                {#<button type="button" id="new_button" onclick="new_form()">Add new TODO</button>#}
+                <button type="button" class="btn btn-default btn-lg" id="new_button" onclick="new_form()">
+                    <span class="glyphicon glyphicon-floppy-saved" aria-hidden="true"></span> New Goal
+                </button>
+
+            </div>
+
+        </div>
+        </div>
+
+        <div class="col-sm-3 sidenav text-left" style="float: right;">
+            <div id="screen2" name="screen2">
+                {% for item in done_goals %}
+                    <div id="{{ item.id }}" name="{{ item.id }}" class="goal list-group-item list-group-item-info">
+                        <p class="head">{{ item.description }}</p>
+                        <br>
+                        <p id="p_{{ item.id }}" name="p_{{ item.id }}" class="inner_p">{{ item.date.format('Y-m-d H:i:s') }} {{ item.username }}
+                            {#<button type="button" id="done_button" onclick="done(this)" class="btn btn-default">Done</button>#}
+                        </p>
+                    </div>
+                {% endfor %}
+            <div>
+
+
+        </div>
     </div>
+</div>
 
 {% endblock %}
 
@@ -48,10 +111,12 @@
     <script src="/js/jquery.min.js"></script>
     <script src="/js/jquery-ui.min.js"></script>
     <script type="text/javascript" src="/js/sss.js"></script>
+    <script type="text/javascript" src="{{ asset('js/bootstrap.min.js') }}"></script>
 {% endblock %}
 
 {% block stylesheets %}
 
     <link rel="stylesheet" type="text/css" href="{{ asset('css/my.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/bootstrap.min.css') }}">
 
 {% endblock %}
