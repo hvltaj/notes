@@ -2,26 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a6fb7218-95b3-4ba8-9c10-57674ea7462d" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/sativa.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/Resources/views/registration/register.html.twig" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/AppBundle/Controller/RegistrationController.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/AppBundle/Entity/User.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/AppBundle/Form/UserType.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/AppBundle/Repository/UserRepository.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/css/bootstrap.min.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/bootstrap.min.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Resources/views/base.html.twig" afterPath="$PROJECT_DIR$/app/Resources/views/base.html.twig" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Resources/views/security/login.html.twig" afterPath="$PROJECT_DIR$/app/Resources/views/security/login.html.twig" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Resources/views/todo/getdone.html.twig" afterPath="$PROJECT_DIR$/app/Resources/views/todo/getdone.html.twig" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Resources/views/todo/single.html.twig" afterPath="$PROJECT_DIR$/app/Resources/views/todo/single.html.twig" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Resources/views/todo/todo.html.twig" afterPath="$PROJECT_DIR$/app/Resources/views/todo/todo.html.twig" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/config/security.yml" afterPath="$PROJECT_DIR$/app/config/security.yml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/AppBundle/Controller/GetDatabaseController.php" afterPath="$PROJECT_DIR$/src/AppBundle/Controller/GetDatabaseController.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/AppBundle/Controller/GetDoneController.php" afterPath="$PROJECT_DIR$/src/AppBundle/Controller/GetDoneController.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/AppBundle/Controller/SecurityController.php" afterPath="$PROJECT_DIR$/src/AppBundle/Controller/SecurityController.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/css/my.css" afterPath="$PROJECT_DIR$/web/css/my.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/js/sss.js" afterPath="$PROJECT_DIR$/web/js/sss.js" />
     </list>
     <ignored path="notes.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -109,12 +90,26 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="GetDoneController.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="GetDoneController.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/AppBundle/Controller/GetDoneController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1260">
-              <caret line="80" column="0" selection-start-line="80" selection-start-column="0" selection-end-line="80" selection-end-column="0" />
+            <state relative-caret-position="396">
+              <caret line="32" column="23" selection-start-line="32" selection-start-column="23" selection-end-line="32" selection-end-column="23" />
               <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="SecurityController.php" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/AppBundle/Controller/SecurityController.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="288">
+              <caret line="16" column="1" selection-start-line="16" selection-start-column="1" selection-end-line="16" selection-end-column="1" />
+              <folding>
+                <element signature="e#6#85#0#PHP" expanded="true" />
+                <element signature="e#120#177#0#PHP" expanded="true" />
+                <element signature="e#802#828#0#PHP" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -177,7 +172,6 @@
         <option value="$PROJECT_DIR$/app/Resources/views/todo/single.html.twig" />
         <option value="$PROJECT_DIR$/app/Resources/views/base.html.twig" />
         <option value="$PROJECT_DIR$/src/AppBundle/Form/UserType.php" />
-        <option value="$PROJECT_DIR$/src/AppBundle/Controller/SecurityController.php" />
         <option value="$PROJECT_DIR$/src/AppBundle/Repository/UserRepository.php" />
         <option value="$PROJECT_DIR$/src/AppBundle/Entity/User.php" />
         <option value="$PROJECT_DIR$/app/config/security.yml" />
@@ -189,6 +183,7 @@
         <option value="$PROJECT_DIR$/app/Resources/views/todo/todo.html.twig" />
         <option value="$PROJECT_DIR$/web/js/sss.js" />
         <option value="$PROJECT_DIR$/src/AppBundle/Controller/GetDoneController.php" />
+        <option value="$PROJECT_DIR$/src/AppBundle/Controller/SecurityController.php" />
       </list>
     </option>
   </component>
@@ -691,12 +686,12 @@
       <workItem from="1483963366967" duration="31000" />
       <workItem from="1483963626204" duration="51000" />
       <workItem from="1483963874463" duration="2557000" />
-      <workItem from="1483972531273" duration="79176000" />
+      <workItem from="1483972531273" duration="80006000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="87026000" />
+    <option name="totallyTimeSpent" value="87856000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-1" y="25" width="1682" height="1026" extended-state="6" />
@@ -1107,17 +1102,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/AppBundle/Controller/SecurityController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="455">
-          <caret line="35" column="0" selection-start-line="35" selection-start-column="0" selection-end-line="35" selection-end-column="0" />
-          <folding>
-            <element signature="e#120#177#0#PHP" expanded="true" />
-            <element signature="e#802#828#0#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/Resources/views/todo/getdone.html.twig">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="162">
@@ -1132,7 +1116,7 @@
           <caret line="242" column="64" selection-start-line="242" selection-start-column="28" selection-end-line="242" selection-end-column="64" />
           <folding>
             <element signature="n#style#0;n#body#0;n#!!top" expanded="true" />
-            <marker date="1484300468424" expanded="true" signature="4507:4531" ph="..." />
+            <marker date="1484309641251" expanded="true" signature="4507:4531" ph="..." />
           </folding>
         </state>
       </provider>
@@ -1214,9 +1198,21 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/AppBundle/Controller/GetDoneController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1260">
-          <caret line="80" column="0" selection-start-line="80" selection-start-column="0" selection-end-line="80" selection-end-column="0" />
+        <state relative-caret-position="396">
+          <caret line="32" column="23" selection-start-line="32" selection-start-column="23" selection-end-line="32" selection-end-column="23" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/AppBundle/Controller/SecurityController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="288">
+          <caret line="16" column="1" selection-start-line="16" selection-start-column="1" selection-end-line="16" selection-end-column="1" />
+          <folding>
+            <element signature="e#6#85#0#PHP" expanded="true" />
+            <element signature="e#120#177#0#PHP" expanded="true" />
+            <element signature="e#802#828#0#PHP" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
